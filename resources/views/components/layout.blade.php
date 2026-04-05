@@ -8,7 +8,7 @@
     @vite('resources/css/app.css')
 </head>
 
-<body class="bg-linear-to-r from-indigo-500 to-purple-600 min-h-screen flex items-center justify-center">
+<body class="bg-white text-black min-h-screen py-10 flex justify-center antialiased">
     {{$slot}}
 </body>
 
