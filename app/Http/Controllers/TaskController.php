@@ -32,14 +32,16 @@ class TaskController extends Controller
     }
     public function updateTask(Request $request, $id){
         $task = Task::findOrFail($id);
-        if ($request->has('title')) {
+        if($request->has('title')){
             $task->title = $request->title;
             $task->is_completed = $request->has('is_completed');
-        } else {
-            $task->is_completed = !$task->is_completed;
+        }else{
+            $task->is_completed= !$task->is_completed;
         }
         
         $task->save();
         return redirect()->route('task.index');
+
     }
+
 }
