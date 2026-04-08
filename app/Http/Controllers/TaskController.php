@@ -10,7 +10,7 @@ class TaskController extends Controller
     public function index()
     {
         $tasks = Task::all();
-        ret urn view("tasks.testing",compact("tasks"));
+        return view("tasks.testing",compact("tasks"));
     }
     public function storeTask(Request $request){
         $task = new Task();
@@ -28,6 +28,18 @@ class TaskController extends Controller
     public function deleteTask($id){
         $task = Task::findOrFail($id);
         $task->delete();
+        return redirect()->route('task.index');
+    }
+    public function updateTask(Request $request, $id){
+        $task = Task::findOrFail($id);
+        if ($request->has('title')) {
+            $task->title = $request->title;
+            $task->is_completed = $request->has('is_completed');
+        } else {
+            $task->is_completed = !$task->is_completed;
+        }
+        
+        $task->save();
         return redirect()->route('task.index');
     }
 }

@@ -29,11 +29,18 @@
                             </span>
                         </div>
 
-                        <form action="{{ route('task.deleteTask', $task->id) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="text-xs font-bold uppercase tracking-wider underline text-black">Del</button>
-                        </form>
+                        <div class="flex gap-4">
+                            <form action="{{ route('task.updateTask', $task->id) }}" method="POST">
+                                @csrf
+                                @method('PUT')
+                                <button type="submit" class="text-xs font-bold uppercase tracking-wider underline text-black">Update</button>
+                            </form>
+                            <form action="{{ route('task.deleteTask', $task->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="text-xs font-bold uppercase tracking-wider underline text-black">Del</button>
+                            </form>
+                        </div>
                     </li>
                 @endforeach
             </ul>
