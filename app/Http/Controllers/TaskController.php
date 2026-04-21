@@ -20,7 +20,6 @@ class TaskController extends Controller
 
         return redirect()->route('task.index');
     }
-
     public function showTask($id){
         $task = Task::findOrFail($id);
         return response()->json($task);
